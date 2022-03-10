@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState, useEffect } from "react";
 function App() {
+  // Declare state variables
+  const [count, setCount] = useState(0);
+  const [product, setProduct] = useState("Eggs");
+  useEffect(() => {
+    console.log(`${product} will rule the world!`);
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      Current {product}'s count: {count}
+      <div>
+        <button onClick={() => setCount(count + 1)}>Add to cart</button>
+        <button onClick={() => setCount(count - 1)}>Remove from cart</button>
+        Change Product:{" "}
+        <input type="text" onChange={(e) => setProduct(e.target.value)} />
+      </div>
     </div>
   );
 }
